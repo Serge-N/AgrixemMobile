@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace AgrixemMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Goats : ContentPage
+    public partial class GoatsPage : ContentPage
     {
-        public Goats()
+        public GoatsPage()
         {
             InitializeComponent();
         }

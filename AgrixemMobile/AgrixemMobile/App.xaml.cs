@@ -8,10 +8,11 @@ namespace AgrixemMobile
 {
     public partial class App : Application
     {
-
+        public static AgrixemManager AgrixemManager { get; private set; }
         public App()
         {
             InitializeComponent();
+            AgrixemManager = new AgrixemManager(new RestService());
 
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
