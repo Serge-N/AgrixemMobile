@@ -79,7 +79,31 @@
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+              HeightRequest="200">
+                <Image Aspect="AspectFill"
+                   Source="https://diggers.news/wp-content/uploads/2019/02/IMG_9877.jpg"
+                   Opacity="0.8" />
+                <Label Text="User"
+                       FontSize="Title"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" 
+                        Margin="0,60,0,0"/>
+                <Label Text="Farm Name"
+                   TextColor="White"
+                       FontSize="Title"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="End" 
+                       Margin="0,0,0,20"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Cattle" Icon="tab_feed.png" Route="CattlePage" ContentTemplate="{DataTemplate local:CattlePage}" />
         <ShellContent Title="Goats" Icon="tab_about.png" Route="GoatsPage" ContentTemplate="{DataTemplate local:GoatsPage}"/>

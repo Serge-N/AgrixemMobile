@@ -7,8 +7,18 @@
              x:Class="AgrixemMobile.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout Padding="10,-10,10,40"  BackgroundColor="White" >
+            <StackLayout>
+                <Image Source="profile.png" VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout>
+                <Entry Placeholder="Email" VerticalOptions="StartAndExpand"/>
+
+                <Entry IsPassword="True" Placeholder="Password"  VerticalOptions="StartAndExpand"/>
+
+                <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

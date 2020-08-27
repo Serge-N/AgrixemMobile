@@ -1,11 +1,9 @@
-﻿using AgrixemMobile.ViewModels;
-using System;
+﻿using AgrixemMobile.Models;
+using AgrixemMobile.ViewModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace AgrixemMobile.Views
@@ -13,18 +11,15 @@ namespace AgrixemMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CattlePage : ContentPage
     {
-        CattleViewModel cattleViewModel;
+        readonly CattleViewModel cattleViewModel;
         public CattlePage()
         {
             InitializeComponent();
-             cattleViewModel = new CattleViewModel();
-           
+            cattleViewModel  = new CattleViewModel();
+            BindingContext = cattleViewModel;
+             
             
         }
-
-        private void Mapio_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
-        {
-            cattleViewModel.GetCow();
-        }
+       
     }
 }

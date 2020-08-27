@@ -72,7 +72,6 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpClientHandlerService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +107,9 @@
       <Project>{F90AA8E4-4986-4409-8BCB-DBAE1FD8F4A9}</Project>
       <Name>AgrixemMobile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

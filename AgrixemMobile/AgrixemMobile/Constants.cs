@@ -5,7 +5,10 @@ namespace AgrixemMobile
     public static class Constants
     {
         // Base URL of REST service
-        public static string CattleRestUrl = Device.RuntimePlatform == Device.Android ? "https://localhost:5001/api/Cattle/" : "https://localhost:44378/api/Cattle/";
-        public static string LocationsRestUrl = Device.RuntimePlatform == Device.Android ? "https://10.0.2.2:5001/api/todoitems/{0}" : "https://localhost:44378/api/Locations/";
+        public static string Cow = "https://agrixemapi.azurewebsites.net/api/Cattle/";
+        public static string Goat = "https://agrixemapi.azurewebsites.net/api/Goat/";
+        public static string CattleToday = "https://agrixemapi.azurewebsites.net/api/Locations/cattle/current/";
+        public static string GoatsToday = "https://agrixemapi.azurewebsites.net/api/Locations/goats/current/";
+        public static string LoginUrl = "https://agrixemapi.azurewebsites.net/api/Login";
     }
 }

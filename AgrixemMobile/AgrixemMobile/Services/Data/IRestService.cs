@@ -7,6 +7,8 @@ namespace AgrixemMobile.Services
     public interface IRestService
     {
         Task<Cattle> GetCattleAsync(int id);
-        Task<List<Locations>> GetLocationsCattleAsync();
+        Task<List<Locations>> GetLocationsCattleAsync(int v);
+        Task<List<Locations>> GetLocationsGoatsAsync(int v);
+      
     }
 }

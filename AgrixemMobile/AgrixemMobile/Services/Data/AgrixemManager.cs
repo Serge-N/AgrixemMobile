@@ -1,7 +1,5 @@
 ﻿using AgrixemMobile.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AgrixemMobile.Services
@@ -17,9 +15,14 @@ namespace AgrixemMobile.Services
         {
             return restService.GetCattleAsync(id);
         }
-        public Task<List<Locations>>  GetCattleLocations()
+        public Task<List<Locations>>  GetCattleLocations(int v)
         {
-            return restService.GetLocationsCattleAsync();
+            return restService.GetLocationsCattleAsync(v);
         }
+        public Task<List<Locations>> GetGoatsLocations(int v)
+        {
+            return restService.GetLocationsGoatsAsync(v);
+        }
+
     }
 }

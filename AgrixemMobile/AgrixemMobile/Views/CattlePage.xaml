@@ -5,7 +5,7 @@
              x:Class="AgrixemMobile.Views.CattlePage">
     <ContentPage.Content>
         <StackLayout>
-            <maps:Map IsShowingUser="true" x:Name="Mapio" MapType="Street"  MapClicked="Mapio_MapClicked"/>
+            <ContentView Content="{Binding Map}" VerticalOptions="FillAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

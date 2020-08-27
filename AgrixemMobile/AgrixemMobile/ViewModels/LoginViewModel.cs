@@ -9,7 +9,7 @@ namespace AgrixemMobile.ViewModels
 
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
+           LoginCommand = new Command(OnLoginClicked);
         }
 
         private async void OnLoginClicked(object obj)
