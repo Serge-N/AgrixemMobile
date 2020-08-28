@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AgrixemMobile.Models;
 using AgrixemMobile.ViewModels;
 using AgrixemMobile.Views;
 using Xamarin.Forms;
@@ -11,6 +12,7 @@ namespace AgrixemMobile
         public AppShell()
         {
             InitializeComponent();
+            
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

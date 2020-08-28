@@ -9,6 +9,8 @@ namespace AgrixemMobile.Services
         Task<Cattle> GetCattleAsync(int id);
         Task<List<Locations>> GetLocationsCattleAsync(int v);
         Task<List<Locations>> GetLocationsGoatsAsync(int v);
-      
+        Task<LoginResult> Login(LoginModel loginModel);
+        void Logout();
+
     }
 }

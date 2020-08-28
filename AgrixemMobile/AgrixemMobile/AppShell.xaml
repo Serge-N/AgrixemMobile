@@ -4,6 +4,7 @@
        xmlns:local="clr-namespace:AgrixemMobile.Views"
        Title="AgrixemMobile"
        x:Class="AgrixemMobile.AppShell">
+       
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -74,36 +75,40 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="Black"
+              HeightRequest="250">
+
+                <Image Aspect="AspectFill"
+                   Source="https://diggers.news/wp-content/uploads/2019/02/IMG_9877.jpg"
+                   Opacity="0.8" />
+
+                <Label Text="Some user"
+                       FontSize="Medium"
+                       TextColor="White"
+                       FontAttributes="Italic"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center" 
+                       Margin="0,100,0,0"/>
+
+                <Label Text="FarmName"
+                       TextColor="White"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="End" 
+                       Margin="0,0,0,20"/>
+
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
     <!-- 
         When the Flyout is visible this defines the content to display in the flyout.
         FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
         https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
     -->
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid BackgroundColor="Black"
-              HeightRequest="200">
-                <Image Aspect="AspectFill"
-                   Source="https://diggers.news/wp-content/uploads/2019/02/IMG_9877.jpg"
-                   Opacity="0.8" />
-                <Label Text="User"
-                       FontSize="Title"
-                   TextColor="White"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" 
-                        Margin="0,60,0,0"/>
-                <Label Text="Farm Name"
-                   TextColor="White"
-                       FontSize="Title"
-                   FontAttributes="Bold"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="End" 
-                       Margin="0,0,0,20"/>
-            </Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Cattle" Icon="tab_feed.png" Route="CattlePage" ContentTemplate="{DataTemplate local:CattlePage}" />
         <ShellContent Title="Goats" Icon="tab_about.png" Route="GoatsPage" ContentTemplate="{DataTemplate local:GoatsPage}"/>
@@ -121,37 +126,5 @@
     -->
     <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
 
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
-
-    // This header appears at the top of the Flyout.
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyout-header
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-flyoutitem-appearance
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-menuitem-appearance
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
 
 </Shell>

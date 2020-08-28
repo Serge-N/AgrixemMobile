@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 
 namespace AgrixemMobile.Services
 {
-    public class AgrixemManager
+    public class AgrixemManager 
     {
         IRestService restService;
+   
         public AgrixemManager( IRestService restService) 
         {
             this.restService = restService;
@@ -22,6 +23,14 @@ namespace AgrixemMobile.Services
         public Task<List<Locations>> GetGoatsLocations(int v)
         {
             return restService.GetLocationsGoatsAsync(v);
+        }
+        public Task<LoginResult> Login(LoginModel loginModel) 
+        {
+            return restService.Login(loginModel);
+        }
+        public void Logout() 
+        {
+            restService.Logout();
         }
 
     }
