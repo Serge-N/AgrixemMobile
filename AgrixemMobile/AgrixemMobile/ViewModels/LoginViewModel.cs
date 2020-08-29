@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace AgrixemMobile.ViewModels
 {
-    public class LoginViewModel  : INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged
     {
         public Command LoginCommand { get; }
         LoginModel loginUser;
@@ -16,19 +16,24 @@ namespace AgrixemMobile.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
-            loginUser = new LoginModel();
-            loginUser.RememberMe = true;
+            loginUser = new LoginModel
+            {
+                RememberMe = true
+            };
         }
 
         private async void OnLoginClicked(object obj)
         {
-           
+
             Wrong = Color.Default;
             OnPropertyChanged("Wrong");
             //make logoin request
             var Results = await App.AgrixemManager.Login(loginUser);
+
             if (Results.Successful)
             {
+                await SecureStorage.SetAsync("isLogged", "Yes");
+                Application.Current.MainPage = new AppShell();
                 // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
                 await Shell.Current.GoToAsync($"//{nameof(CattlePage)}");
                 SecretPass = string.Empty;
@@ -39,11 +44,10 @@ namespace AgrixemMobile.ViewModels
 
             else
             {
-                Debug.WriteLine($"Login response is :{Results.Successful}");
                 Wrong = Color.Red;
                 OnPropertyChanged("Wrong");
             }
-            
+
         }
         public string Email
         {

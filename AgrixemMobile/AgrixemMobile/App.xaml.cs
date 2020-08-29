@@ -1,9 +1,9 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using AgrixemMobile.Services;
 using AgrixemMobile.Views;
 using System.Net.Http;
+using AgrixemMobile.ViewModels;
+using System.Diagnostics;
 
 namespace AgrixemMobile
 {
@@ -14,11 +14,20 @@ namespace AgrixemMobile
         {
             InitializeComponent();
             //single http client
-             HttpClient client = new HttpClient();
-            AgrixemManager = new AgrixemManager(new RestService(client));
+           
+            AgrixemManager = new AgrixemManager(new RestService(new HttpClient()));
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            if (string.IsNullOrEmpty(Settings.ApiToken))
+            {
+                MainPage = new LoginPage();
+            }
+                
+            else
+            {
+                MainPage = new AppShell();
+            }
+                
+
         }
 
         protected override void OnStart()

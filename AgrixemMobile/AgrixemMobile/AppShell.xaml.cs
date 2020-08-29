@@ -12,12 +12,14 @@ namespace AgrixemMobile
         public AppShell()
         {
             InitializeComponent();
-            
+            this.BindingContext = new Sidebar();
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//LoginPage");
+            App.AgrixemManager.Logout();
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
+     
     }
 }

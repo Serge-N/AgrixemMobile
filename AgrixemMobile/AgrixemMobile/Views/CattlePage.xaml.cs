@@ -11,15 +11,13 @@ namespace AgrixemMobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CattlePage : ContentPage
     {
-        readonly CattleViewModel cattleViewModel;
         public CattlePage()
         {
             InitializeComponent();
-            cattleViewModel  = new CattleViewModel();
-            BindingContext = cattleViewModel;
-             
             
+            BindingContext = new CattleViewModel();
+
         }
-       
+
     }
 }
