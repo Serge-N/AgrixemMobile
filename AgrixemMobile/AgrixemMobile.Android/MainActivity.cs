@@ -8,12 +8,9 @@ using Android.Widget;
 using Android.OS;
 using Android;
 
-using Android.Content;
-using System.Threading.Tasks;
-
 namespace AgrixemMobile.Droid
 {
-    [Activity(Label = "AgrixemMobile", Icon = "@mipmap/icon", Theme = "@style/MyTheme.Splash")]
+    [Activity(Label = "AgrixemMobile", Icon = "@mipmap/icon", Theme = "@style/MainTheme",  ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         const int RequestLocationId = 0;
@@ -30,7 +27,6 @@ namespace AgrixemMobile.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             LoadApplication(new App());
-           // Finish();
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -73,21 +69,5 @@ namespace AgrixemMobile.Droid
                 }
             }
         }
-        
-        // Launches the startup task
-        protected override void OnResume()
-        {
-            base.OnResume();
-            Task startupWork = new Task(() => { SimulateStartup(); });
-            startupWork.Start();
-        }
-        // Simulates background work that happens behind the splash screen
-        async void SimulateStartup()
-        {
-            
-            await Task.Delay(3000); // Simulate a bit of startup work.
-            StartActivity(new Intent(Application.Context, typeof(MainActivity)));
-        }
-        public override void OnBackPressed() { }
     }
 }

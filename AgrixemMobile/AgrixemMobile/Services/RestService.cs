@@ -156,7 +156,7 @@ namespace AgrixemMobile.Services
             {
                 if (roles.ToString().Trim().StartsWith("["))
                 {
-                    var parsedRoles = System.JsonSerializer.Deserialize<string[]>(roles.ToString());
+                    var parsedRoles = System.Text.Json.JsonSerializer.Deserialize<string[]>(roles.ToString());
 
                     foreach (var parsedRole in parsedRoles)
                     {
