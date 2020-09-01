@@ -11,6 +11,6 @@ namespace AgrixemMobile
         public static string CattleToday = "https://agrixemapi.azurewebsites.net/api/Locations/cattle/current/";
         public static string GoatsToday = "https://agrixemapi.azurewebsites.net/api/Locations/goats/current/";
         public static string LoginUrl = "https://agrixemapi.azurewebsites.net/api/Login";
-       
+        public static string FarmsUrl = "https://agrixemapi.azurewebsites.net/api/Farms/";
     }
 }

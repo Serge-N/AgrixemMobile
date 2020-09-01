@@ -156,7 +156,7 @@ namespace AgrixemMobile.Services
             {
                 if (roles.ToString().Trim().StartsWith("["))
                 {
-                    var parsedRoles = System.Text.Json.JsonSerializer.Deserialize<string[]>(roles.ToString());
+                    var parsedRoles = System.JsonSerializer.Deserialize<string[]>(roles.ToString());
 
                     foreach (var parsedRole in parsedRoles)
                     {
@@ -184,6 +184,33 @@ namespace AgrixemMobile.Services
                 case 3: base64 += "="; break;
             }
             return Convert.FromBase64String(base64);
+        }
+
+        public async Task<Farms> GetFarmAsync()
+        {
+            var Farm = new Farms();
+
+            var URL = Constants.FarmsUrl + Settings.FarmId;
+            Debug.WriteLine($"\n\n\n\n\n\n\n\n\n\nAddress: {URL}\n\n\n\n\n\n\n\n\n\n");
+
+            Uri uri = new Uri(string.Format(URL, string.Empty));
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Farm = JsonConvert.DeserializeObject<Farms>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return Farm;
+
         }
     }
 }

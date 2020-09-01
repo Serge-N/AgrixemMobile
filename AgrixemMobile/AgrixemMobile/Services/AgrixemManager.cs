@@ -32,6 +32,10 @@ namespace AgrixemMobile.Services
         {
             restService.Logout();
         }
+        public Task<Farms> GetFarmAsync()
+        {
+            return restService.GetFarmAsync();
+        }
 
     }
 }

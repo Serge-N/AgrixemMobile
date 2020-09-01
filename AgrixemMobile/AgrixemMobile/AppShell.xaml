@@ -93,7 +93,7 @@
                        VerticalTextAlignment="Center" 
                        Margin="0,100,0,0"/>
 
-                <Label Text="FarmName"
+                <Label Text="{Binding FarmName}"
                        TextColor="White"
                        FontSize="Title"
                        FontAttributes="Bold"
