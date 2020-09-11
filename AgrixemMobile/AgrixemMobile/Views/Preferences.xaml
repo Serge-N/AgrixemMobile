@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AgrixemMobile.Views.Preferences">
+
+    <TableView Intent="Settings">
+        <TableRoot>
+            
+            <TableSection Title="Tracing">
+                <SwitchCell Text="Goats" OnChanged="Goats_OnChanged" x:Name="KeyG"/>
+                <SwitchCell Text="Cattle" OnChanged="Cattle_OnChanged" x:Name="KeyC" />
+            </TableSection>
+            
+            <TableSection >
+                <ViewCell >
+                    <StackLayout x:Name="Boss">
+
+                        <Picker x:Name="FarmPicker"
+                                Title="Pick a Farm" 
+                                Margin="10, 0 , 10 , 0" 
+                                FontSize="Small"
+                                SelectedIndexChanged="FarmPicker_SelectedIndexChanged"
+                                ItemDisplayBinding="{Binding Name}"
+                                ItemsSource="{Binding Farms}" />
+                        
+                    </StackLayout>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+
+</ContentPage>

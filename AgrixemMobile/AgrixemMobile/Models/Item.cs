@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AgrixemMobile.Models
+﻿namespace AgrixemMobile.Models
 {
     public class Item
     {

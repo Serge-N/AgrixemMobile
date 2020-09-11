@@ -1,29 +1,33 @@
 ﻿using AgrixemMobile.Models;
+using AgrixemMobile.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
-using System.Text;
-using AgrixemMobile.ViewModels;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
+using Xamarin.Essentials;
 
 namespace AgrixemMobile.Services
 {
     public class RestService : IRestService
     {
-        readonly HttpClient client;
+        private readonly HttpClient client;
+
+
         public List<Locations> CattleLocations { get; private set; }
         public List<Locations> GoatsLocations { get; private set; }
         public Cattle Cow { get; private set; }
         public RestService(HttpClient client)
         {
             this.client = client;
+
         }
-        public async Task<Cattle> GetCattleAsync(int id)
+        public async Task<Cattle> GetCattleAsync(long id)
         {
             Cow = new Cattle();
             var URL = Constants.Cow + id;
@@ -101,21 +105,34 @@ namespace AgrixemMobile.Services
 
             StringContent content = new StringContent(login, Encoding.UTF8, "application/json");
 
-            var result = await client.PostAsync(Constants.LoginUrl, content);
-
-            LoginResult parsedResult = JsonConvert.DeserializeObject<LoginResult>(result.Content.ReadAsStringAsync().Result);
-
-            if (result.IsSuccessStatusCode)
+            try
             {
-                //store the key
-                Settings.ApiToken = parsedResult.Token;
-                //Parse token
-                MarkUserAsAuthenticated(parsedResult.Token);
-                //Tell authorization
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", parsedResult.Token);
+
+                var result = await client.PostAsync(Constants.LoginUrl, content);
+
+                LoginResult parsedResult = JsonConvert.DeserializeObject<LoginResult>(result.Content.ReadAsStringAsync().Result);
+
+                if (result.IsSuccessStatusCode)
+                {
+                    //store the key
+                    Settings.ApiToken = parsedResult.Token;
+                    //Parse token
+                    MarkUserAsAuthenticated(parsedResult.Token);
+                    //Tell authorization
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", parsedResult.Token);
+
+                }
+                return parsedResult;
 
             }
-            return parsedResult;
+
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+
+                return null;
+            }
 
         }
 
@@ -129,7 +146,7 @@ namespace AgrixemMobile.Services
         public void MarkUserAsAuthenticated(string token)
         {
             var authenticatedUser = new ClaimsPrincipal(new ClaimsIdentity(ParseClaimsFromJwt(token), "jwt"));
-            
+
             Settings.FarmId = authenticatedUser.Claims.FirstOrDefault(c => c.Type == "Farm")?.Value;
             Settings.Name = authenticatedUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
             Settings.Surname = authenticatedUser.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
@@ -141,6 +158,9 @@ namespace AgrixemMobile.Services
             Settings.FarmId = string.Empty;
             Settings.Name = string.Empty;
             Settings.Surname = string.Empty;
+            Settings.ApiToken = string.Empty;
+            Settings.GoatTracing = false;
+            Settings.CattleTracing = false;
         }
 
         private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
@@ -191,7 +211,6 @@ namespace AgrixemMobile.Services
             var Farm = new Farms();
 
             var URL = Constants.FarmsUrl + Settings.FarmId;
-            Debug.WriteLine($"\n\n\n\n\n\n\n\n\n\nAddress: {URL}\n\n\n\n\n\n\n\n\n\n");
 
             Uri uri = new Uri(string.Format(URL, string.Empty));
 
@@ -212,5 +231,60 @@ namespace AgrixemMobile.Services
             return Farm;
 
         }
+
+        public async Task<List<Farms>> GetAllFarmAsync()
+        {
+
+            var Farms = new List<Farms>();
+
+            Uri uri = new Uri(string.Format(Constants.AllFarmsUrl, string.Empty));
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Farms = JsonConvert.DeserializeObject<List<Farms>>(content);
+      
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return Farms;
+        }
+
+        public async Task<List<string>> FarmImagesAsync()
+        {
+            var FarmImages = new List<string>();
+
+            string url = $"{Settings.FarmId}/farm";
+
+            var newAddress = Constants.MediaRequest + url;
+
+            Uri uri = new Uri(string.Format(newAddress, string.Empty));
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    FarmImages = JsonConvert.DeserializeObject<List<string>>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+
+            return FarmImages;
+        }
+
+
+
     }
 }

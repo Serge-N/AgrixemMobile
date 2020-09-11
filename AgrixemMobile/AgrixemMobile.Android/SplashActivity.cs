@@ -13,6 +13,7 @@ namespace AgrixemMobile.Droid
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
             base.OnCreate(savedInstanceState, persistentState);
+            Finish();
         }
 
         // Launches the startup task

@@ -75,14 +75,13 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <Grid BackgroundColor="Black"
               HeightRequest="250">
 
                 <Image Aspect="AspectFill"
-                   Source="https://diggers.news/wp-content/uploads/2019/02/IMG_9877.jpg"
+                   Source="{Binding FarmImage}"
                    Opacity="0.8" />
 
                 <Label Text="{Binding Name}"
@@ -112,12 +111,12 @@
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Cattle" Icon="tab_feed.png" Route="CattlePage" ContentTemplate="{DataTemplate local:CattlePage}" />
         <ShellContent Title="Goats" Icon="tab_about.png" Route="GoatsPage" ContentTemplate="{DataTemplate local:GoatsPage}"/>
+        <ShellContent Title="Settings" Icon="tab_about.png" Route="Settings" ContentTemplate="{DataTemplate local:Preferences}"/>
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>
-
     <!--
         This defines content that won't show up in a flyout menu. When this content is active the flyout menu won't be available.
         This is useful for creating areas of the application where you don't want users to be able to navigate away from.

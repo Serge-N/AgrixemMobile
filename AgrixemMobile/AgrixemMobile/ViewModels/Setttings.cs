@@ -1,8 +1,6 @@
 ﻿using Plugin.Settings;
 using Plugin.Settings.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Xamarin.Essentials;
 
 namespace AgrixemMobile.ViewModels
 {
@@ -22,57 +20,55 @@ namespace AgrixemMobile.ViewModels
         private const string SettingsId = "farmId";
         private const string SettingName = "FirstName";
         private const string SettingSurName = "LastName";
+        private const string SettingCattle = "CattleKey";
+        private const string SettingGoats = "GoatsKey";
         private static readonly string SettingsDefault = string.Empty;
-        
+        private static readonly bool DefaultTracing = false;
 
         #endregion
 
-
         public static string ApiToken
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(SettingsKey, value);
-            }
+            get => AppSettings.GetValueOrDefault(SettingsKey, SettingsDefault);
+            set => AppSettings.AddOrUpdateValue(SettingsKey, value);
         }
         public static string FarmId
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault(SettingsId, SettingsDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(SettingsId, value);
-            }
+            get => AppSettings.GetValueOrDefault(SettingsId, SettingsDefault);
+            set => AppSettings.AddOrUpdateValue(SettingsId, value);
         }
         public static string Name
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault(SettingName, SettingsDefault);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue(SettingName, value);
-            }
+            get => AppSettings.GetValueOrDefault(SettingName, SettingsDefault);
+            set => AppSettings.AddOrUpdateValue(SettingName, value);
         }
         public static string Surname
         {
-            get
+            get => AppSettings.GetValueOrDefault(SettingSurName, SettingsDefault);
+            set => AppSettings.AddOrUpdateValue(SettingSurName, value);
+        }
+        public static bool CattleTracing
+        {
+            get => AppSettings.GetValueOrDefault(SettingCattle, DefaultTracing);
+            set => AppSettings.AddOrUpdateValue(SettingCattle, value);
+        }
+        public static bool GoatTracing
+        {
+            get => AppSettings.GetValueOrDefault(SettingGoats, DefaultTracing);
+            set => AppSettings.AddOrUpdateValue(SettingGoats, value);
+        }
+        public static bool CheckInternetConnection()
+        {
+            var current = Connectivity.NetworkAccess;
+            if (current == NetworkAccess.None)
             {
-                return AppSettings.GetValueOrDefault(SettingSurName, SettingsDefault);
+                return false;
             }
-            set
+            else
             {
-                AppSettings.AddOrUpdateValue(SettingSurName, value);
+                return true;
             }
         }
-
 
     }
 }

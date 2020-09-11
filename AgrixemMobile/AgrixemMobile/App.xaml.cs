@@ -1,9 +1,8 @@
-﻿using Xamarin.Forms;
-using AgrixemMobile.Services;
+﻿using AgrixemMobile.Services;
+using AgrixemMobile.ViewModels;
 using AgrixemMobile.Views;
 using System.Net.Http;
-using AgrixemMobile.ViewModels;
-using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace AgrixemMobile
 {
@@ -14,19 +13,19 @@ namespace AgrixemMobile
         {
             InitializeComponent();
             //single http client
-           
+
             AgrixemManager = new AgrixemManager(new RestService(new HttpClient()));
 
             if (string.IsNullOrEmpty(Settings.ApiToken))
             {
                 MainPage = new LoginPage();
             }
-                
+
             else
             {
                 MainPage = new AppShell();
             }
-                
+
 
         }
 

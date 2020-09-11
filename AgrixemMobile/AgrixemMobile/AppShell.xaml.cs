@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using AgrixemMobile.Models;
-using AgrixemMobile.ViewModels;
+﻿using AgrixemMobile.ViewModels;
 using AgrixemMobile.Views;
+using System;
 using Xamarin.Forms;
 
 namespace AgrixemMobile
@@ -12,7 +10,7 @@ namespace AgrixemMobile
         public AppShell()
         {
             InitializeComponent();
-            this.BindingContext = new Sidebar();
+            BindingContext = new Sidebar();
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
@@ -20,6 +18,6 @@ namespace AgrixemMobile
             App.AgrixemManager.Logout();
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
-     
+
     }
 }

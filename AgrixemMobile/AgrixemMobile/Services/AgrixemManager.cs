@@ -4,19 +4,19 @@ using System.Threading.Tasks;
 
 namespace AgrixemMobile.Services
 {
-    public class AgrixemManager 
+    public class AgrixemManager
     {
-        IRestService restService;
-   
-        public AgrixemManager( IRestService restService) 
+        private readonly IRestService restService;
+
+        public AgrixemManager(IRestService restService)
         {
             this.restService = restService;
         }
-        public Task<Cattle> GetCattleAsync(int id)
+        public Task<Cattle> GetCattleAsync(long id)
         {
             return restService.GetCattleAsync(id);
         }
-        public Task<List<Locations>>  GetCattleLocations(int v)
+        public Task<List<Locations>> GetCattleLocations(int v)
         {
             return restService.GetLocationsCattleAsync(v);
         }
@@ -24,17 +24,25 @@ namespace AgrixemMobile.Services
         {
             return restService.GetLocationsGoatsAsync(v);
         }
-        public Task<LoginResult> Login(LoginModel loginModel) 
+        public Task<LoginResult> Login(LoginModel loginModel)
         {
             return restService.Login(loginModel);
         }
-        public void Logout() 
+        public void Logout()
         {
             restService.Logout();
         }
         public Task<Farms> GetFarmAsync()
         {
             return restService.GetFarmAsync();
+        }
+        public Task<List<Farms>> GetAllFarmAsync()
+        {
+            return restService.GetAllFarmAsync();
+        }
+        public Task<List<string>> FarmImages()
+        {
+            return restService.FarmImagesAsync();
         }
 
     }

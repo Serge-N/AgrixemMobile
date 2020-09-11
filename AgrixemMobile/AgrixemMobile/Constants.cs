@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using Xamarin.Forms;
-
-namespace AgrixemMobile
+﻿namespace AgrixemMobile
 {
     public static class Constants
     {
@@ -12,5 +9,8 @@ namespace AgrixemMobile
         public static string GoatsToday = "https://agrixemapi.azurewebsites.net/api/Locations/goats/current/";
         public static string LoginUrl = "https://agrixemapi.azurewebsites.net/api/Login";
         public static string FarmsUrl = "https://agrixemapi.azurewebsites.net/api/Farms/";
+        public static string AllFarmsUrl = "https://agrixemapi.azurewebsites.net/api/Farms";
+        public static string MediaRequest = "https://agrixemapi.azurewebsites.net/api/media/farms/";
+        public static string MediaCaller = "https://agrixemapi.azurewebsites.net/media/farms/";
     }
 }
