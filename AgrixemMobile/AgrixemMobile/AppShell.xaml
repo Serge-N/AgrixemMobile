@@ -5,25 +5,18 @@
        Title="AgrixemMobile"
        x:Class="AgrixemMobile.AppShell">
        
-
-    <!--
-        The overall app visual hierarchy is defined here, along with navigation.
-    
-        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
-    -->
-
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.ForegroundColor" Value="White" />
-                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.ForegroundColor" Value="Blue" />
+                <Setter Property="Shell.TitleColor" Value="Blue" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Black"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Blue"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -33,7 +26,7 @@
             https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
             -->
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="TextColor" Value="Blue"></Setter>
             </Style>
             <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="BackgroundColor" Value="LightBlue"></Setter>
@@ -103,27 +96,17 @@
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
-    <!-- 
-        When the Flyout is visible this defines the content to display in the flyout.
-        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
-        https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
-    -->
+
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
-        <ShellContent Title="Cattle" Icon="tab_feed.png" Route="CattlePage" ContentTemplate="{DataTemplate local:CattlePage}" />
-        <ShellContent Title="Goats" Icon="tab_about.png" Route="GoatsPage" ContentTemplate="{DataTemplate local:GoatsPage}"/>
-        <ShellContent Title="Settings" Icon="tab_about.png" Route="Settings" ContentTemplate="{DataTemplate local:Preferences}"/>
+        <ShellContent Title="Cattle" Icon="cow.png" Route="CattlePage" ContentTemplate="{DataTemplate local:CattlePage}" />
+        <ShellContent Title="Goats" Icon="goat.png" Route="GoatsPage" ContentTemplate="{DataTemplate local:GoatsPage}"/>
+        <ShellContent Title="Settings" Icon="settings.png" Route="Settings" ContentTemplate="{DataTemplate local:Preferences}"/>
     </FlyoutItem>
 
-    <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
-    </MenuItem>
-    <!--
-        This defines content that won't show up in a flyout menu. When this content is active the flyout menu won't be available.
-        This is useful for creating areas of the application where you don't want users to be able to navigate away from.
-        If you would like to navigate to this content you can do so by calling
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
+    <MenuItem Text="Logout"  Icon="logout.png" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked"/>
+
+
     <ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />
 
-
+    
 </Shell>

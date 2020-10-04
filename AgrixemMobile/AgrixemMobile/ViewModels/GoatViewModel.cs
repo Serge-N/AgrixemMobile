@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
@@ -10,7 +9,7 @@ using Xamarin.Forms.Maps;
 
 namespace AgrixemMobile.ViewModels
 {
-    public class CattleViewModel : INotifyPropertyChanged
+    public class GoatViewModel : INotifyPropertyChanged
     {
         private readonly int farmID;
         private ObservableCollection<Locations> locations;
@@ -18,7 +17,7 @@ namespace AgrixemMobile.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public CattleViewModel()
+        public GoatViewModel()
         {
             //get farmID
             farmID = int.Parse(Settings.FarmId);
@@ -37,7 +36,7 @@ namespace AgrixemMobile.ViewModels
         private async void GetLocations()
         {
             locations = new ObservableCollection<Locations>();
-            var loc = await App.AgrixemManager.GetCattleLocations(farmID);
+            var loc = await App.AgrixemManager.GetGoatsLocations(farmID);
             locations = new ObservableCollection<Locations>(loc);
             Groups();
         }
@@ -67,9 +66,9 @@ namespace AgrixemMobile.ViewModels
             LocationsAsync();
             OnPropertyChanged("Locations");
         }
-        public async System.Threading.Tasks.Task<Cattle> GetCow(int CowID)
+        public async System.Threading.Tasks.Task<Goat> GetGoat(long goadID)
         {
-            return await App.AgrixemManager.GetCattleAsync(CowID);
+            return await App.AgrixemManager.GetGoatAsync(goadID);
         }
         public void LocationsAsync()
         {
@@ -98,7 +97,7 @@ namespace AgrixemMobile.ViewModels
 
 
                     //for all cattle movements
-                    if (Settings.CattleTracing)
+                    if (Settings.GoatTracing)
                     {
                         //for each all sort all of today's movements
                         var SingleCattleLocations = LocationsForEachAnimal
@@ -127,7 +126,7 @@ namespace AgrixemMobile.ViewModels
                 }
 
 
-                //single cattle present location
+                //single goat present location
                 foreach (var last in LastKnown)
                 {
                     if (LastKnown.IndexOf(last) == 0)
@@ -136,7 +135,7 @@ namespace AgrixemMobile.ViewModels
                         MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(0.8));
                         Map.MoveToRegion(mapSpan);
                     }
-                    
+
 
                     Pin pin = new Pin
                     {

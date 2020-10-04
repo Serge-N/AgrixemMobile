@@ -16,6 +16,10 @@ namespace AgrixemMobile.Services
         {
             return restService.GetCattleAsync(id);
         }
+        public Task<Goat> GetGoatAsync(long id)
+        {
+            return restService.GetGoatAsync(id);
+        }
         public Task<List<Locations>> GetCattleLocations(int v)
         {
             return restService.GetLocationsCattleAsync(v);

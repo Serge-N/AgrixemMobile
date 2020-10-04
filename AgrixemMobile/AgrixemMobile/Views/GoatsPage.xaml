@@ -5,7 +5,7 @@
              x:Class="AgrixemMobile.Views.GoatsPage">
     <ContentPage.Content>
         <StackLayout>
-            <maps:Map IsShowingUser="true" x:Name="Mapio" MapType="Satellite"  />
+            <ContentView Content="{Binding Map}" VerticalOptions="FillAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

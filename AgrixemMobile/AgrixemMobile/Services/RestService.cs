@@ -17,11 +17,10 @@ namespace AgrixemMobile.Services
     public class RestService : IRestService
     {
         private readonly HttpClient client;
-
-
         public List<Locations> CattleLocations { get; private set; }
         public List<Locations> GoatsLocations { get; private set; }
         public Cattle Cow { get; private set; }
+        public Goat Goat { get; private set; }
         public RestService(HttpClient client)
         {
             this.client = client;
@@ -30,8 +29,8 @@ namespace AgrixemMobile.Services
         public async Task<Cattle> GetCattleAsync(long id)
         {
             Cow = new Cattle();
-            var URL = Constants.Cow + id;
 
+            var URL = Constants.Cow + id;
 
             Uri uri = new Uri(string.Format(URL, string.Empty));
             try
@@ -50,6 +49,29 @@ namespace AgrixemMobile.Services
             }
             return Cow;
         }
+        public async Task<Goat> GetGoatAsync(long id)
+        {
+            Goat = new Goat();
+
+            var URL = Constants.Goat + id;
+
+            Uri uri = new Uri(string.Format(URL, string.Empty));
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(uri);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    Goat = JsonConvert.DeserializeObject<Goat>(content);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+            }
+            return Goat;
+        }
         public async Task<List<Locations>> GetLocationsCattleAsync(int v)
         {
 
@@ -61,6 +83,7 @@ namespace AgrixemMobile.Services
             try
             {
                 HttpResponseMessage response = await client.GetAsync(uri);
+
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
@@ -96,9 +119,8 @@ namespace AgrixemMobile.Services
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
 
-            return CattleLocations;
+            return GoatsLocations;
         }
-
         public async Task<LoginResult> Login(LoginModel loginModel)
         {
             var login = JsonConvert.SerializeObject(loginModel);
@@ -107,7 +129,6 @@ namespace AgrixemMobile.Services
 
             try
             {
-
                 var result = await client.PostAsync(Constants.LoginUrl, content);
 
                 LoginResult parsedResult = JsonConvert.DeserializeObject<LoginResult>(result.Content.ReadAsStringAsync().Result);
