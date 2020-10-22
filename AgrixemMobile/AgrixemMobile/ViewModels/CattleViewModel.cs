@@ -142,8 +142,8 @@ namespace AgrixemMobile.ViewModels
                     {
                         Position = new Position(last.Lat, last.Lon),
                         Type = PinType.Generic,
-                        Address = $"Status: {last.Lat}",
-                        Label = $"Name: {last.Lon}"
+                        Address = $"Tag ID: XXX (OK)",
+                        Label = $"Name: XXX"
                     };
 
 
