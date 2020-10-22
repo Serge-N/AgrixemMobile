@@ -9,12 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgrixemMobile.iOS", "Agrixe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgrixemMobile", "AgrixemMobile\AgrixemMobile\AgrixemMobile.csproj", "{093BFED8-6B70-4442-A958-53CA4802BB2A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{F9A1C458-FA74-447A-BC14-E97785AE1B8E}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\Desktop\menu.png = ..\..\..\..\Desktop\menu.png
-		..\..\..\..\Desktop\settings.png = ..\..\..\..\Desktop\settings.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
