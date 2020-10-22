@@ -24,6 +24,8 @@ The application was only designed with one feature in mind, showing locations of
 # How it looks
 ![Menu](AgrixemMobile/AgrixemMobile/screenshoots/menu.png)
 
+
+
 ![Settings](AgrixemMobile/AgrixemMobile/screenshoots/settings.png)
 
 ###### Images might be updated as quickly as the source code.
