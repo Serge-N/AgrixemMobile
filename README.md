@@ -22,3 +22,8 @@ An electronic device attached to an animal makes a HTTP POST which contains Glob
 The application was only designed with one feature in mind, showing locations of both the animal and you. Your location is updated in realtime while that of the animal is updated periodically at the backend. To update the animal location on a gntle tap can be given on the map. Just like the SPA, this is also an MVP.
 
 # How it looks
+
+
+
+
+###### Images might be updated as quickly as the source code.
