@@ -2,11 +2,11 @@
 
 Techonology | Selected Option
 ------------ | -------------
-**Client** |The University of Zambia, School of Engineering
+**Client** | The University of Zambia, School of Engineering
 
-**Type**| Mobile Application
+**Type** | Mobile Application
 
-**Mode**| Cross platiform
+**Mode** | Cross platiform
 
 **Service API**|  Representational state transfer (REST)
 
