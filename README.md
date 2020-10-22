@@ -19,12 +19,12 @@ This very feature is also implemented by the Single Page Application (SPA). The 
 
 An electronic device attached to an animal makes a HTTP POST which contains Global Positioning System (GPS) cordinates of the animal to a backend server. Posting of essential data is done a regular time interval. Network provision is done using a General Packet Radio Services (GPRS) chip. 2G still covers most of our country. The information is then requested by mobile application. Keep in mind that all animals despite the farm or type are posting data to the same REST endpoint. 
 
-The application was only designed with one feature in mind, showing locations of both the animal and you. Your location is updated in realtime while that of the animal is updated periodically at the backend. To update the animal location on a gntle tap can be given on the map. Just like the SPA, this is also an MVP.
+The application was only designed with one feature in mind, showing locations of both the animal and you. Your location is updated in realtime while that of the animal is updated periodically at the backend. To update the animal location on a gentle tap can be given on the map. Just like the SPA, this is also an MVP.
 
 # How it looks
 ![Menu](AgrixemMobile/AgrixemMobile/screenshoots/menu.png)
 
-
+Tracing is showing where the animal has past for that day.
 
 ![Settings](AgrixemMobile/AgrixemMobile/screenshoots/settings.png)
 
